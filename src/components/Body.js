@@ -35,7 +35,7 @@ const Body=()=>{
       );
       setfilteredlistOfRestuarant(filterList);
     };
-    return listOfRestuarant.length==0?<ShimmerCard2 />:(<div><div className="body flex mt-[10px] ">
+    return (!listOfRestuarant || listOfRestuarant.length === 0) ? <ShimmerCard2 />:(<div><div className="body flex mt-[10px] ">
             <div className="filter flex flex-col h-[200px] w-[300px] bg-white order-2 mr-[20px]  items-center justify-center rounded-lg">
                   <div className="searchContainer border-2 border-gray-300 bg-white h-10  rounded-lg text-sm focus:outline-none  flex  w-[80%] ">
                   <input type="text" id="searchbox" onKeyDown={(event) => {
