@@ -38,7 +38,7 @@ const Cart = () => {
                                     <div className="relative text-center cursor-pointer" onClick={()=>handlesubItem(items)} >
                                     <img src={url+items?.card?.info?.imageId} className="h-[50px] w-[70px]" onError={(e) => e.target.src = 'https://img.freepik.com/free-vector/color-doodle-food-burger-pattern_1409-3918.jpg'}/>
                                     <div className="self-start mr-[10px] shadowcss w-[50px] text-red-500 text-center absolute bottom-[-5px] rounded-lg left-[15%]  bg-white/90" >
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i className="fa-solid fa-trash"></i>
                                     </div>
                                     </div>
                                     

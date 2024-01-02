@@ -20,8 +20,8 @@ import { useState } from "react";
     
     return (resinfo==null)?<ShimmerCard3/>:(
     <div className="menu text-white"> 
-    <div><div class="alert-box success">ITEM ADDED TO CART!!!</div>
-     <div class="alert-box failure">Removed!!!</div></div>
+    <div><div className="alert-box success">ITEM ADDED TO CART!!!</div>
+     <div className="alert-box failure">Removed!!!</div></div>
        <div className="bg-[url('https://img.freepik.com/free-vector/restaurant-mural-wallpaper_23-2148703851.jpg')]"><div className="backdrop-blur-[5px]"><h1 className="z-10 text-[50px] text-center">{name}</h1>
        <p className="text-center z-10"><b>{locality},{areaName},{city}</b></p>
        <h2 className="text-[30px] text-center ">Menu</h2></div></div>
