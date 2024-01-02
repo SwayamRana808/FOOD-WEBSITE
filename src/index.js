@@ -44,6 +44,7 @@ const AppLayout=()=>{
 const appRouter=createBrowserRouter([
   {
     path:"/",
+  
     element:<AppLayout/>,
     errorElement:<Error/>,
     children:[ 
@@ -79,7 +80,6 @@ const appRouter=createBrowserRouter([
         element :<Header/>,
   }
 
-],
-{ basename: "/FOOD-WEBSITE/" })
+] )
 const rootitem=ReactDOM.createRoot(document.getElementById("root"))
 rootitem.render( <RouterProvider router={appRouter}/>)
