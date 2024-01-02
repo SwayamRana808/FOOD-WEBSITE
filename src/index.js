@@ -79,6 +79,6 @@ const appRouter=createBrowserRouter([
         element :<Header/>,
   }
 
-],{basename:"/"} )
+])
 const rootitem=ReactDOM.createRoot(document.getElementById("root"))
 rootitem.render( <RouterProvider router={appRouter}/>)
