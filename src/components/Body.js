@@ -23,8 +23,9 @@ const Body=()=>{
       const url = 'https://corsproxy.org/?' + encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.1774553&lng=78.0077653&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
       const data2 =await fetch(url);
       const json2=await data2.json();
-      setlistOfRestuarant(json2?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      setfilteredlistOfRestuarant(json2?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
+      console.log(json2)
+      setlistOfRestuarant(json2?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setfilteredlistOfRestuarant(json2?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
       catch(e){
          console.log(e)
       }
