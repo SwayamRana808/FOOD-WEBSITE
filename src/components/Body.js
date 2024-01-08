@@ -24,8 +24,8 @@ const Body=()=>{
       const data2 =await fetch(url);
       const json2=await data2.json();
       console.log(json2)
-      setlistOfRestuarant(json2?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      setfilteredlistOfRestuarant(json2?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
+      setlistOfRestuarant(json2?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setfilteredlistOfRestuarant(json2?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
       catch(e){
          console.log(e)
       }
