@@ -3,20 +3,58 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import {useState,useEffect} from "react";
 import {ShimmerCard2} from "./ShimmerCard";
 import {Link} from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 
+const provider = new GoogleAuthProvider();
 const Body=()=>{
    //state variable;
    
    const [listOfRestuarant,setlistOfRestuarant]=useState([]);
    const [searchtext,setsearchtext]=useState("");
+   const [login,setLogin]=useState(false);
    const [filteredlistOfRestuarant,setfilteredlistOfRestuarant]=useState([]);
- 
+   useEffect(()=>{
+      console.log("useeffect inside body")
+      fetchdata()
+      const unsubsribe=onAuthStateChanged(auth, (user) => { //event listner
 
-  useEffect(()=>{
-   console.log("useeffect inside body")
-   fetchdata()
-  },[])
+        if (user) {
+          setLogin(true);
+          const {uid,email,displayName} =auth.currentUser;
+          
+          // ...
+        } else {
+          setLogin(false)
+        }
+      });
+      return ()=>unsubsribe();
+     },[])
+
+  const handleSignin=()=>{
+   signInWithPopup(auth, provider)
+   .then((result) => {
+     // This gives you a Google Access Token. You can use it to access the Google API.
+     const credential = GoogleAuthProvider.credentialFromResult(result);
+     const token = credential.accessToken;
+     // The signed-in user info.
+     const user = result.user;
+     // IdP data available using getAdditionalUserInfo(result)
+     // ...
+   }).catch((error) => {
+     // Handle Errors here.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+     // The email of the user's account used.
+     const email = error.customData.email;
+     // The AuthCredential type that was used.
+     const credential = GoogleAuthProvider.credentialFromError(error);
+     // ...
+   });
  
+  }
 
    async function fetchdata(){
       try{
@@ -64,8 +102,18 @@ const Body=()=>{
                 }}>Top-Rated Restaurant</button>
             </div>
             <div className="res-container order-1">
+            {
+
+           
+            }
               {filteredlistOfRestuarant?.map((res,INDEX)=>{
-                 return <Link style={{textDecoration:'none'}}key={INDEX} to={"/restuarants/"+res.info.id}><RestaurantCard  resObj={res}/></Link>
+              
+                 return (login?
+                  
+                  <Link style={{textDecoration:'none'}}key={INDEX} to={"/restuarants/"+res.info.id}><RestaurantCard  resObj={res}/></Link>
+                  /* <Link style={{textDecoration:'none'}} to={"/restuarants/"+res.info.id} key={INDEX} onClick={handleSignin}><RestaurantCard  resObj={res}/></Link> */
+                   
+                  :(<div onClick={handleSignin}><RestaurantCard  resObj={res}/></div>))
               })}
             </div>
       </div>
